@@ -1,3 +1,5 @@
-body{
-    background-color: black;
+.slider-image {
+  height: 500px !important;
+  object-fit: cover;
+  transition: 0ms;
 }
