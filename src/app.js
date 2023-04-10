@@ -5,16 +5,19 @@ const app= express()
 const hbs = require("hbs")
 
 const mongoose=require("mongoose")
+const bodyParser=require("body-parser")
 const routes=require("./routes/main")
 const Detail=require("./models/Detail")
 const Slider=require("./models/Slider")
+const Service=require("./models/Service")
 
-
-app.use('',routes)
 
 // /static/css/style.css
+app.use(bodyParser.urlencoded({
+  extended:true
+}))
 app.use('/static',express.static("public"))
-
+app.use('',routes)
 
 
 //(template engine)
@@ -58,7 +61,30 @@ mongoose.connect("mongodb://127.0.0.1:27017/dynamic_web",{
        
 // })
 
-//localhost server
+// Service.create([{
+//     icon: "fas fa-video service_icon",
+//     title: "Provide Best Courses",
+//     description: "we provide best courses that helps us student in placement and learning coding",
+//     linkText: "check",
+//     link: "http://www.google.com",
+//   },
+//   {
+//     icon: "fal fa-whistle",
+//     title: "learn code with Vaibhav",
+//     description: "basic to advance level coding for development",
+//     linkText: "Learn",
+//     link: "http://www.google.com",
+//   },
+//   {
+//     icon: "fal fa-whistle",
+//     title: "learn code with Vaibhav",
+//     description: "basic to advance level coding for development",
+//     linkText: "Learn",
+//     link: "http://www.google.com",
+//   }])
+
+
+  //localhost server
 app.listen(process.env.PORT | 5556,()=>{
     console.log("Server Started...")
 })
